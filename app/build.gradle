@@ -13,7 +13,9 @@ android {
         versionCode 1
         versionName "1.0"
     }
-
+    sourceSets{
+        main.java.srcDirs += 'src/main/kotlin'      //소스로 사용할 디렉토리를 추가하는 부분.
+    }
     buildTypes {
         release {
             minifyEnabled false
