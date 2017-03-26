@@ -2,7 +2,7 @@
 
 buildscript {
     repositories {
-        jcenter()
+        jcenter()   //?? 앱 빌드에 필요한 여러가지 라이브러리가 있는데 그 라이브러리가 있는 원격 서버.유사한것으로 Maven central이 있다.
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.0'
