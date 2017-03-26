@@ -15,11 +15,12 @@ import android.widget.TextView
 import io.realm.Realm
 import io.realm.RealmChangeListener
 import io.realm.RealmResults
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var rvPeople: RecyclerView
-    lateinit var tvEmpty: TextView
+//    lateinit var rvPeople: RecyclerView
+//   lateinit var tvEmpty: TextView
     lateinit var peopleAdapter: PeopleAdapter
     lateinit var realm: Realm
 
@@ -27,13 +28,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        rvPeople = findViewById(R.id.rv_activity_main) as RecyclerView
-        tvEmpty = findViewById(R.id.tv_activity_main) as TextView
+//        rvPeople = findViewById(R.id.rv_activity_main) as RecyclerView
+//        tvEmpty = findViewById(R.id.tv_activity_main) as TextView
 
         peopleAdapter = PeopleAdapter()
 
-        rvPeople.layoutManager = LinearLayoutManager(this)
-        rvPeople.adapter = peopleAdapter
+        rv_activity_main.layoutManager = LinearLayoutManager(this)
+        rv_activity_main.adapter = peopleAdapter
 
         realm = Realm.getDefaultInstance()     //사용 후 닫아 줘야만 한다.
     }
@@ -87,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         realm.where(Person::class.java).findAllAsync()    //findAll을 하면 blocking call로 불러온다.
                 .addChangeListener { result ->
                     if (result.isLoaded) {
-                        tvEmpty.visibility = if (result.isEmpty()) View.VISIBLE else View.GONE
+                        tv_activity_main.visibility = if (result.isEmpty()) View.VISIBLE else View.GONE
 
                         peopleAdapter.setPeople(result)
                         peopleAdapter.notifyDataSetChanged()

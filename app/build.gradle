@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'  //kotlin setting
 apply plugin: 'realm-android'   //realm 을 depency안에 넣어준다.
+apply plugin: 'kotlin-android-extensions'   //findviewbyid없이 view를 사용할 수 있게 해준다,.
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion

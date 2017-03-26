@@ -10,22 +10,23 @@ import android.view.MenuItem
 import android.widget.EditText
 
 import io.realm.Realm
+import kotlinx.android.synthetic.main.activity_edit.*
 
 class EditActivity : AppCompatActivity() {
 
-    lateinit var tlName: TextInputLayout    //val은 안된다.
-
-    lateinit var etName: EditText
-
-    lateinit var etAddress: EditText
+//    lateinit var tlName: TextInputLayout    //val은 안된다.
+//
+//    lateinit var etName: EditText
+//
+//    lateinit var etAddress: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
-
-        tlName = findViewById(R.id.ti_activity_edit_name) as TextInputLayout
-        etName = findViewById(R.id.et_activity_edit_name) as EditText
-        etAddress = findViewById(R.id.et_activity_edit_address) as EditText
+//
+//        tlName = findViewById(R.id.ti_activity_edit_name) as TextInputLayout
+//        etName = findViewById(R.id.et_activity_edit_name) as EditText
+//        etAddress = findViewById(R.id.et_activity_edit_address) as EditText
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -42,9 +43,9 @@ class EditActivity : AppCompatActivity() {
     }
 
     private fun applyChanges() {
-        if (etName.text.isEmpty()) {
+        if (et_activity_edit_name.text.isEmpty()) {
             // TODO: Remove error on content changes
-            tlName.error = getText(R.string.msg_name_cannot_be_empty)
+            ti_activity_edit_name.error = getText(R.string.msg_name_cannot_be_empty)
             return
         }
 
@@ -62,8 +63,8 @@ class EditActivity : AppCompatActivity() {
         realm.beginTransaction()//-----------------------------------------------------------
 
         val person = realm.createObject(Person::class.java, nextId)
-        person.name = etName.text.toString()
-        person.address = etAddress.text.toString()
+        person.name = et_activity_edit_name.text.toString()
+        person.address = et_activity_edit_address.text.toString()
 
         /* Alternative method:
         Person person = new Person();
