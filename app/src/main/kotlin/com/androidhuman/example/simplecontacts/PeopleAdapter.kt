@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import kotlinx.android.synthetic.main.item_person.view.*
 
 class PeopleAdapter : RecyclerView.Adapter<PeopleAdapter.PersonHolder>() {
 
@@ -18,12 +19,20 @@ class PeopleAdapter : RecyclerView.Adapter<PeopleAdapter.PersonHolder>() {
 
     override fun onBindViewHolder(holder: PersonHolder, position: Int) {
         val person = people!![position]
-
-        holder.name.text = person.name
-        holder.address.text = if (!TextUtils.isEmpty(person.address))
-            person.address
-        else
-            "(No address)"
+        //after
+        with(holder.itemView){//with 는 kotlin에서 제공하는 함수.
+            tv_item_person_name.text = person.name
+            tv_item_person_address.text = if (!TextUtils.isEmpty(person.address))
+                person.address
+            else
+                "(No address)"
+        }
+        //before
+//        holder.name.text = person.name
+//        holder.address.text = if (!TextUtils.isEmpty(person.address))
+//            person.address
+//        else
+//            "(No address)"
     }
 
     override fun getItemId(position: Int): Long {
@@ -39,21 +48,6 @@ class PeopleAdapter : RecyclerView.Adapter<PeopleAdapter.PersonHolder>() {
     }
 
     inner class PersonHolder(parent: ViewGroup) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_person, parent, false)) {
-
-        var name: TextView
-
-        var address: TextView
-
-        init {
-
-            name = itemView.findViewById(R.id.tv_item_person_name) as TextView
-            address = itemView.findViewById(R.id.tv_item_person_address) as TextView
-
-            itemView.setOnClickListener {
-                // TODO: Start an activity to edit an item.
-            }
-        }
-    }
+            .inflate(R.layout.item_person, parent, false))
 
 }
