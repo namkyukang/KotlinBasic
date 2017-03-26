@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'  //kotlin setting
 apply plugin: 'realm-android'   //realm 을 depency안에 넣어준다.
 
 android {
@@ -26,4 +27,6 @@ dependencies {
     compile rootProject.ext.constraintLayout
     compile rootProject.ext.recyclerView
     compile rootProject.ext.supportDesign
+    compile rootProject.ext.supportDesign
+    compile rootProject.ext.kotlin              //kotlin setting
 }

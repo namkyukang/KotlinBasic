@@ -19,11 +19,8 @@ import io.realm.RealmResults;
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView rvPeople;
-
     TextView tvEmpty;
-
     PeopleAdapter peopleAdapter;
-
     Realm realm;
 
     @Override
@@ -39,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         rvPeople.setLayoutManager(new LinearLayoutManager(this));
         rvPeople.setAdapter(peopleAdapter);
 
-        realm = Realm.getDefaultInstance();
+        realm = Realm.getDefaultInstance();     //사용 후 닫아 줘야만 한다.
     }
 
     @Override
@@ -77,14 +74,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         if (isFinishing()) {
-            cleanUp();
+            cleanUp();               //realm 닫아줌
         }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        cleanUp();
+        cleanUp();                  //realm 닫아줌
     }
 
     private void cleanUp() {
@@ -94,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void queryPeople() {
-        realm.where(Person.class).findAllAsync()
+        realm.where(Person.class).findAllAsync()    //findAll을 하면 blocking call로 불러온다.
                 .addChangeListener(new RealmChangeListener<RealmResults<Person>>() {
                     @Override
                     public void onChange(RealmResults<Person> result) {

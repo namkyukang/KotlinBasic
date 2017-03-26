@@ -18,7 +18,8 @@ public class Person extends RealmObject {
 
     @Nullable
     private String address;
-
+    //Realm같은 경우 반드시 getter setter를 만들어 줘야만 한다.
+    //plugin에서 소스를 넣어주기 떄문에 로직을 추가하거나 해선 안된다.
     public long getId() {
         return id;
     }

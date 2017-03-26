@@ -64,7 +64,7 @@ public class EditActivity extends AppCompatActivity {
             nextId = currentMaxId.longValue() + 1;
         }
 
-        realm.beginTransaction();
+        realm.beginTransaction();//-----------------------------------------------------------
 
         Person person = realm.createObject(Person.class, nextId);
         person.setName(etName.getText().toString());
@@ -78,7 +78,7 @@ public class EditActivity extends AppCompatActivity {
         realm.copyToRealm(person);
         */
 
-        realm.commitTransaction();
+        realm.commitTransaction();//-----------------------------------------------------------실제적으로 데이터에 반영이된다.
 
         realm.close();
 
