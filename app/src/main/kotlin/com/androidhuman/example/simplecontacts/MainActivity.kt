@@ -18,10 +18,10 @@ import io.realm.RealmResults
 
 class MainActivity : AppCompatActivity() {
 
-    internal var rvPeople: RecyclerView
-    internal var tvEmpty: TextView
-    internal var peopleAdapter: PeopleAdapter
-    internal var realm: Realm
+    lateinit var rvPeople: RecyclerView
+    lateinit var tvEmpty: TextView
+    lateinit var peopleAdapter: PeopleAdapter
+    lateinit var realm: Realm
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,9 +56,9 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         queryPeople()
     }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-        if (Activity.RESULT_OK == resultCode && EditActivity.REQUEST_CODE == requestCode) {
+                                                                    //data가 null일수도 있다.
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (RESULT_OK == resultCode && EditActivity.REQUEST_CODE == requestCode) {
             queryPeople()
         } else {
             super.onActivityResult(requestCode, resultCode, data)

@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
-internal class PeopleAdapter : RecyclerView.Adapter<PeopleAdapter.PersonHolder>() {
+class PeopleAdapter : RecyclerView.Adapter<PeopleAdapter.PersonHolder>() {
 
     private var people: List<Person>? = null
 
@@ -38,7 +38,7 @@ internal class PeopleAdapter : RecyclerView.Adapter<PeopleAdapter.PersonHolder>(
         this.people = people
     }
 
-    internal inner class PersonHolder(parent: ViewGroup) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context)
+    inner class PersonHolder(parent: ViewGroup) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context)
             .inflate(R.layout.item_person, parent, false)) {
 
         var name: TextView

@@ -13,11 +13,11 @@ import io.realm.Realm
 
 class EditActivity : AppCompatActivity() {
 
-    internal var tlName: TextInputLayout
+    lateinit var tlName: TextInputLayout    //val은 안된다.
 
-    internal var etName: EditText
+    lateinit var etName: EditText
 
-    internal var etAddress: EditText
+    lateinit var etAddress: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +42,7 @@ class EditActivity : AppCompatActivity() {
     }
 
     private fun applyChanges() {
-        if (etName.text.length == 0) {
+        if (etName.text.isEmpty()) {
             // TODO: Remove error on content changes
             tlName.error = getText(R.string.msg_name_cannot_be_empty)
             return
@@ -80,9 +80,8 @@ class EditActivity : AppCompatActivity() {
         setResult(RESULT_OK)
         finish()
     }
-
     companion object {
-
+        //public static final int REQUEST_CODE = 10 kotlin에서는 static이 없다.
         val REQUEST_CODE = 10
     }
 }
