@@ -40,7 +40,8 @@ class PeopleAdapter : RecyclerView.Adapter<PeopleAdapter.PersonHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return if (null != people) people!!.size else 0
+        return people?.size ?: 0
+        //return if (null != people) people!!.size else 0
     }
 
     fun setPeople(people: List<Person>?) {

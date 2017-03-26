@@ -20,9 +20,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
 //    lateinit var rvPeople: RecyclerView
-//   lateinit var tvEmpty: TextView
-    lateinit var peopleAdapter: PeopleAdapter
-    lateinit var realm: Realm
+//    lateinit var tvEmpty: TextView
+
+
+    //해당 객체가 call될때 init되고 실행된다.
+    val peopleAdapter by lazy{PeopleAdapter()}  // onCreate()일때
+    val realm:Realm by lazy{Realm.getDefaultInstance()} //queryPeople()일때
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,12 +35,12 @@ class MainActivity : AppCompatActivity() {
 //        rvPeople = findViewById(R.id.rv_activity_main) as RecyclerView
 //        tvEmpty = findViewById(R.id.tv_activity_main) as TextView
 
-        peopleAdapter = PeopleAdapter()
+
 
         rv_activity_main.layoutManager = LinearLayoutManager(this)
         rv_activity_main.adapter = peopleAdapter
 
-        realm = Realm.getDefaultInstance()     //사용 후 닫아 줘야만 한다.
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

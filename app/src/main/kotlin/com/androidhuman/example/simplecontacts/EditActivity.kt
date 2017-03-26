@@ -53,12 +53,10 @@ class EditActivity : AppCompatActivity() {
 
         // Get next id value for primary key
         val currentMaxId = realm.where(Person::class.java).max(Person.PRIMARY_KEY)
-        val nextId: Long?
-        if (null == currentMaxId) {
-            nextId = 0L
-        } else {
-            nextId = currentMaxId.toLong() + 1
-        }
+
+        //val nextId: Long?
+        val nextId: Long = if (null == currentMaxId) 0L else currentMaxId.toLong() + 1
+
 
         realm.beginTransaction()//-----------------------------------------------------------
 
